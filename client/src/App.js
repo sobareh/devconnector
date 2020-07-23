@@ -9,6 +9,7 @@ import Alert from "./components/layout/Alert";
 import Dashboard from "./components/dashboard/Dashboard";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
+import ProfileForm from "./components/profile-forms/ProfileForm";
 
 // Private route
 import PrivateRoute from "./routing/PrivateRoute";
@@ -31,13 +32,18 @@ const App = () => {
       <Router>
         <>
           <Navbar />
-          <Route exact path='/' component={Landing} />
-          <section className='container'>
+          <Route exact path="/" component={Landing} />
+          <section className="container">
             <Alert />
             <Switch>
-              <Route path='/login' component={Login} />
-              <Route path='/register' component={Register} />
-              <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={ProfileForm}
+              />
             </Switch>
           </section>
         </>
