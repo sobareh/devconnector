@@ -10,6 +10,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 import ProfileForm from "./components/profile-forms/ProfileForm";
+import EditProfile from "./components/profile-forms/EditProfile";
 
 // Private route
 import PrivateRoute from "./routing/PrivateRoute";
@@ -43,6 +44,11 @@ const App = () => {
                 exact
                 path="/create-profile"
                 component={ProfileForm}
+              />
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditProfile}
               />
             </Switch>
           </section>
