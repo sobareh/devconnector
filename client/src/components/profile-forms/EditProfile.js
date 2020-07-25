@@ -4,28 +4,26 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
 
-const initialState = {
-  company: "",
-  website: "",
-  location: "",
-  status: "",
-  skills: "",
-  githubusername: "",
-  bio: "",
-  twitter: "",
-  facebook: "",
-  linkedin: "",
-  youtube: "",
-  instagram: "",
-};
-
 const EditProfile = ({
   profile: { profile, loading },
   createProfile,
   history,
   getCurrentProfile,
 }) => {
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = useState({
+    company: "",
+    website: "",
+    location: "",
+    status: "",
+    skills: "",
+    githubusername: "",
+    bio: "",
+    twitter: "",
+    facebook: "",
+    linkedin: "",
+    youtube: "",
+    instagram: "",
+  });
   const [displaySocialInputs, togleSocialInputs] = useState(false);
 
   useEffect(() => {
