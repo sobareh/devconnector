@@ -20,6 +20,7 @@ import PrivateRoute from "./routing/PrivateRoute";
 // Redux Setup
 import { Provider } from "react-redux";
 import store from "./store";
+import Profiles from "./components/profiles/Profiles";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -62,6 +63,7 @@ const App = () => {
                 path='/add-education'
                 component={AddEducation}
               />
+              <Route exact path='/profiles' component={Profiles} />
             </Switch>
           </section>
         </>
