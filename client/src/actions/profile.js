@@ -62,12 +62,12 @@ export const getGithubRepos = (username) => async (dispatch) => {
       type: GET_REPOS,
       payload: res.data,
     });
-  } catch (error) {
+  } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
       payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
+        msg: err.response.statusText,
+        status: err.response.status,
       },
     });
   }

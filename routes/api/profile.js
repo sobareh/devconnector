@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../../middleware/auth");
-const request = require("request");
+const axios = require("axios");
 const config = require("config");
 const { check, validationResult } = require("express-validator");
 
@@ -320,31 +320,30 @@ router.delete("/education/:exp_id", auth, async (req, res) => {
 // @route   GET api/profile/github/:username
 // @desc    Get user repos from Github
 // @access  Public
-router.get("/github/:username", (req, res) => {
+router.get("/github/:username", async (req, res) => {
   try {
-    const options = {
-      uri: `https://api.github.com/users/${
-        req.params.username
-      }/repos?per_page=5&sort=created:asc&client_id=&${config.get(
-        "githubClientId"
-      )}&client_secret=${config.get("githubSecret")}`,
-      method: "GET",
-      headers: { "user-agent": "node.js" },
+    const uri = encodeURI(
+      `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc`
+    );
+    const headers = {
+      "user-agent": "node.js",
+      Authorization: `token ${config.get("githubToken")}`,
     };
 
-    request(options, (error, response, body) => {
-      if (error) console.error(error);
-
-      if (response.statusCode !== 200) {
-        return res.status(404).json({ msg: "No Github profile found" });
-      }
-
-      res.json(JSON.parse(body));
-    });
+    const gitHubResponse = await axios.get(uri, { headers });
+    return res.json(gitHubResponse.data);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    return res.status(404).json({ msg: "No Github profile found" });
   }
 });
 
 module.exports = router;
+
+// {
+//   "mongoURI": "mongodb://admin:admin123@devconnector-shard-00-00-4qlwd.mongodb.net:27017,devconnector-shard-00-01-4qlwd.mongodb.net:27017,devconnector-shard-00-02-4qlwd.mongodb.net:27017/devconnector?ssl=true&replicaSet=DevConnector-shard-0&authSource=admin&retryWrites=true&w=majority",
+//   "jwtSecret": "mysecrettoken",
+//   "githubClientId": "d2049ae16bb125e437bf",
+//   "githubSecret": "6e318e1e382244fafb8bb2c9183b1864a9d69b8f",
+//   "githubToken": "7184301fc333bb15ad2c98779a8ea68090dddf9d"
+// }
