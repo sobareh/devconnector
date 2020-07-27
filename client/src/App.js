@@ -13,6 +13,7 @@ import ProfileForm from "./components/profile-forms/ProfileForm";
 import EditProfile from "./components/profile-forms/EditProfile";
 import AddExperience from "./components/profile-forms/AddExperience";
 import AddEducation from "./components/profile-forms/AddEducation";
+import Profile from "./components/profile/Profile";
 
 // Private route
 import PrivateRoute from "./routing/PrivateRoute";
@@ -36,34 +37,35 @@ const App = () => {
       <Router>
         <>
           <Navbar />
-          <Route exact path='/' component={Landing} />
-          <section className='container'>
+          <Route exact path="/" component={Landing} />
+          <section className="container">
             <Alert />
             <Switch>
-              <Route path='/login' component={Login} />
-              <Route path='/register' component={Register} />
-              <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute
                 exact
-                path='/create-profile'
+                path="/create-profile"
                 component={ProfileForm}
               />
               <PrivateRoute
                 exact
-                path='/edit-profile'
+                path="/edit-profile"
                 component={EditProfile}
               />
               <PrivateRoute
                 exact
-                path='/add-experience'
+                path="/add-experience"
                 component={AddExperience}
               />
               <PrivateRoute
                 exact
-                path='/add-education'
+                path="/add-education"
                 component={AddEducation}
               />
-              <Route exact path='/profiles' component={Profiles} />
+              <Route exact path="/profiles" component={Profiles} />
+              <Route exact path="/profile/:id" component={Profile} />
             </Switch>
           </section>
         </>
