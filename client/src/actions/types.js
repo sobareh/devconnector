@@ -14,6 +14,8 @@ export const UPDATE_PROFILE = "GET_PROFILE";
 export const PROFILE_ERROR = "PROFILE_ERROR";
 export const DELETED_ACCOUNT = "DELETED_ACCOUNT";
 export const CLEAR_PROFILE = "CLEAR_PROFILE";
+export const GET_POSTS = "GET_POSTS";
+export const POSTS_ERROR = "POSTS_ERROR";
 
 // const newUser = {
 //   name,
