@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
+import PostItem from "./PostItem";
 import { getPosts } from "../../actions/post";
 
 const Posts = ({ getPosts, post: { post, loading } }) => {
@@ -9,10 +10,22 @@ const Posts = ({ getPosts, post: { post, loading } }) => {
     getPosts();
   }, [getPosts]);
 
-  return (
-    <div>
-      <h4>fetch posts API</h4>
-    </div>
+  return loading ? (
+    <Spinner />
+  ) : (
+    <>
+      <h1 className='large text-primary'>Posts</h1>
+      <p className='lead'>
+        <i className='fas fa-user'></i> Welcome to the community
+      </p>
+
+      {/* PostForm */}
+      <div className='posts'>
+        {post.map((post) => (
+          <PostItem key={post._id} post={post} />
+        ))}
+      </div>
+    </>
   );
 };
 
