@@ -5,7 +5,7 @@ import Spinner from "../layout/Spinner";
 import PostItem from "./PostItem";
 import { getPosts } from "../../actions/post";
 
-const Posts = ({ getPosts, post: { post, loading } }) => {
+const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
@@ -21,7 +21,7 @@ const Posts = ({ getPosts, post: { post, loading } }) => {
 
       {/* PostForm */}
       <div className='posts'>
-        {post.map((post) => (
+        {posts.map((post) => (
           <PostItem key={post._id} post={post} />
         ))}
       </div>
