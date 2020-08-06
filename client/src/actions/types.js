@@ -15,9 +15,11 @@ export const PROFILE_ERROR = "PROFILE_ERROR";
 export const DELETED_ACCOUNT = "DELETED_ACCOUNT";
 export const CLEAR_PROFILE = "CLEAR_PROFILE";
 export const GET_POSTS = "GET_POSTS";
+export const GET_POST = "GET_POST";
 export const POSTS_ERROR = "POSTS_ERROR";
 export const UPDATE_LIKES = "UPDATE_LIKES";
 export const DELETE_POSTS = "DELETE_POSTS";
+export const ADD_POST = "ADD_POST";
 
 // const newUser = {
 //   name,
