@@ -20,24 +20,5 @@ export const POSTS_ERROR = "POSTS_ERROR";
 export const UPDATE_LIKES = "UPDATE_LIKES";
 export const DELETE_POSTS = "DELETE_POSTS";
 export const ADD_POST = "ADD_POST";
-
-// const newUser = {
-//   name,
-//   email,
-//   password,
-// };
-
-// try {
-//   const config = {
-//     headers: {
-//       "Content-Type": "Application/json",
-//     },
-//   };
-
-//   const body = JSON.stringify(newUser);
-
-//   const res = await axios.post("/api/users", body, config);
-//   console.log(res.data);
-// } catch (err) {
-//   console.error(err.response.data);
-// }
+export const ADD_COMMENT = "ADD_COMMENT";
+export const REMOVE_COMMENT = "REMOVE_COMMENT";
